@@ -1,0 +1,128 @@
+@px: 1rem*75;
+.clearfix() {
+    zoom: 1;
+    &:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+.fontover() {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../images/big_bg.jpg');
+    background-size: cover;
+    position: relative;
+    object-fit: cover
+}
+
+.main-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.app-name {
+    font-size: 36/@px;
+    line-height: 1em;
+    margin-bottom: 135/@px;
+  }
+
+.app-logo {
+    height: 180/@px;
+    position: relative;
+    margin-bottom: 55/@px;
+    img {
+        width: 180/@px;
+        display: block; // width: 100%;
+        border-radius: 25/@px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 0 20/@px rgba(32, 135, 185, .4);
+    }
+}
+
+.center-pic {
+    height: 90/@px;
+    background-image: url('../images/down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+.app-download {
+    display: block;
+    position: relative;
+    color: #fff;
+    margin-top: 45/@px;
+    margin-bottom: 100/@px;
+    background: #f65c08;
+    width: 320/@px;
+    height: 80/@px;
+    line-height: 80/@px;
+    text-align: center;
+    padding-left: 48/@px;
+    border-radius: 10/@px;
+    box-shadow: 0 0 20/@px rgba(213, 75, 0, .4);
+    .iconfont {
+        position: absolute;
+        top: 50%;
+        left: 48/@px;
+        font-size: 48/@px;
+        color: #fff;
+        transform: translateY(-50%);
+    }
+}
+
+.bottom-text {
+    line-height: 48/@px;
+    color: #fff;
+    font-size: 28/@px;
+}
+
+.pop-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    .pop-mask {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .3);
+    }
+    &.dis-none {
+        display: none;
+    }
+}
+
+.pop-main {
+    position: absolute;
+    z-index: 99999;
+    width: 100%;
+    height: 300/@px;
+    top: 0;
+    left: 0;
+    background: url('../images/small_bg.jpg');
+    background-size: cover;
+}

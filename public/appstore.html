@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <meta name="browsermode" content="application">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>黑白画室</title>
+    <link rel="stylesheet" href="./css/down.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_uf66ibe2y882rzfr.css">
+    <script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js"></script>
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="app-name">黑白画室</div>
+        <div class="app-logo"><img src="images/001.png" alt=""></div>
+        <div class="center-pic"></div>
+        <a class="app-download" href="" style="text-decoration:none"></a>
+        <div class="bottom-text">
+            走进形于色的世界<br> 发现美的真谛
+        </div>
+    </div>
+    <div class="pop-container dis-none">
+        <div class="pop-main">
+
+        </div>
+        <div class="pop-mask">
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            var $down = document.querySelector('.app-download');
+            var $svgUse = $down.querySelector('use');
+            if (browser.versions.ios) {
+                setBtn('ios', 'iPhone 下载');
+                if (true) { //如果是appstore链接、
+                    $down.setAttribute('href', 'https://itunes.apple.com/cn/app/kua-ke-liu-lan-qi-ji-jian/id1160172628?l=zh&ls=1&mt=8');
+                    window.location.href = 'https://itunes.apple.com/cn/app/kua-ke-liu-lan-qi-ji-jian/id1160172628?l=zh&ls=1&mt=8'
+                } else {
+                    if (browser.versions.weixin) {
+                        $down.setAttribute('href', 'javascript:openPop()');
+                    } else {
+                        $down.setAttribute('href', 'itms-services://?action=download-manifest&url=http://fmcat.top/test/001.plist');
+                    }
+                }
+            } else {
+                setBtn('anzhuo', 'Android 下载');
+                if (browser.versions.weixin) {
+                    $down.setAttribute('href', 'javascript:openPop()');
+                } else {
+                    $down.setAttribute('href', './test/001.apk');
+                }
+            }
+
+            function setBtn(os, text) {
+                $down.innerHTML = '<i class="iconfont icon-' + os + '"></i> <span>' + text + '</span>';
+            }
+        }
+
+        function openPop() {
+            var $pop = document.querySelector('.pop-container');
+            var $mask = $pop.querySelector('.pop-mask');
+            $pop.classList.remove('dis-none');
+            $mask.onclick = function() {
+                $pop.classList.add('dis-none');
+            }
+        }
+        var browser = {
+            versions: function() {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                return {
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                    weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                    qq: u.match(/\sQQ/i) == " qq" //是否QQ
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+    </script>
+</body>
+
+</html>
